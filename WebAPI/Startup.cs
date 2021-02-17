@@ -10,13 +10,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebAPI
+namespace WebAPII
 {
     public class Startup
     {
@@ -32,7 +31,7 @@ namespace WebAPI
         {
             //Autofac, Ninject,CastleWindsor, StructureMap, LinghtInject, DryInject --> IoC Container
             services.AddControllers();
-            services.AddSingleton<IProductService,ProductManager>();
+            services.AddSingleton<IProductService, ProductManager>();
             services.AddSingleton<IProductDal, EfProductDal>();
             //services.AddSwaggerGen(c =>
             //{
@@ -46,8 +45,6 @@ namespace WebAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
 
             app.UseHttpsRedirection();
